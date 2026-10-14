@@ -266,7 +266,7 @@ section { padding: 96px 60px; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 30px;
+  padding: 13px 26px;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   color: var(--white);
   border-radius: 8px;
@@ -280,13 +280,36 @@ section { padding: 96px 60px; }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(192,57,43,0.45);
-  opacity: 0.93;
+  opacity: 0.95;
+  color: var(--white);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.5);
+  color: var(--white);
+  transform: translateY(-2px);
 }
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 30px;
+  padding: 13px 26px;
   background: transparent;
   color: var(--white);
   border: 2px solid rgba(255,255,255,0.3);
@@ -298,7 +321,8 @@ section { padding: 96px 60px; }
 }
 .btn-outline:hover {
   border-color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
   transform: translateY(-2px);
 }
 
@@ -539,17 +563,59 @@ section { padding: 96px 60px; }
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  position: relative;
 }
 .project-card:hover {
   box-shadow: var(--shadow-accent);
-  border-color: rgba(192,57,43,0.2);
-  transform: translateY(-6px);
+  border-color: rgba(192,57,43,0.25);
+  transform: translateY(-5px);
+}
+.project-card.project-featured {
+  border: 1.5px solid rgba(192,57,43,0.35);
+  box-shadow: 0 4px 20px rgba(192,57,43,0.08);
+}
+.project-card.project-featured .project-card-top {
+  background: linear-gradient(135deg, #1f2038 0%, #2a1f3d 60%, #16213e 100%);
 }
 .project-card-top {
   background: linear-gradient(135deg, var(--primary) 0%, #1e2b50 60%, #16213e 100%);
   padding: 28px 24px 22px;
   position: relative;
   overflow: hidden;
+}
+.project-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.project-meta-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.project-type-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.project-featured-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(192,57,43,0.4);
 }
 .project-card-top::after {
   content: '';
@@ -562,24 +628,24 @@ section { padding: 96px 60px; }
 }
 .project-number {
   font-family: var(--heading-font);
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.08);
   line-height: 1;
-  margin-bottom: 8px;
 }
 .project-name {
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 6px;
 }
-.project-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+.project-sub { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.4; }
 .project-links {
   display: flex;
   gap: 8px;
   position: absolute;
   top: 18px; right: 18px;
+  z-index: 2;
 }
 .project-link-btn {
   display: flex;
@@ -924,4 +990,16 @@ footer span { color: var(--accent2); }
   .nav-links { display: none; }
   .exp-header { flex-direction: column; }
   .hero-photo-frame { width: 220px; height: 280px; }
+  .hero-btns { flex-direction: column; width: 100%; max-width: 320px; }
+  .btn-primary, .btn-secondary, .btn-outline { width: 100%; justify-content: center; }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
